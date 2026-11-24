@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14213d">
+<title>School Automatic Bell</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🔔 SCHOOL AUTOMATIC BELL</h1>
+  <p>Junior High School & Senior High School</p>
+</header>
+
+<main class="container">
+
+<section class="card">
+  <h2>Digital Clock</h2>
+  <div id="clock">--:--:--</div>
+  <p id="date">Waiting for time...</p>
+  <small id="timeStatus">Time not synchronized</small>
+</section>
+
+<section class="card">
+  <h2>ESP32 Connection</h2>
+  <p id="connection" class="offline">Connecting...</p>
+  <p>Wi-Fi: SCHOOL_BELL_ESP32</p>
+  <p>Address: <a href="http://192.168.4.1">192.168.4.1</a></p>
+  <p id="ip">Device IP: --</p>
+</section>
+
+<section class="card">
+  <h2>🔔 Bell Controls</h2>
+  <div class="buttons">
+    <button onclick="playBell(1)">Bell 1</button>
+    <button onclick="playBell(2)">Bell 2</button>
+    <button onclick="playBell(3)">Bell 3</button>
+    <button class="secondary" onclick="stopBell()">Stop Bells</button>
+  </div>
+  <p id="bellStatus">Bell OFF</p>
+</section>
+
+<section class="card">
+  <h2>🚨 Emergency Monitoring</h2>
+
+  <div class="sensor">
+    <p>Flame Sensor: <strong id="flame">Checking...</strong></p>
+    <p>Smoke Sensor: <strong id="smoke">Checking...</strong></p>
+    <p>Vibration Sensor: <strong id="vibration">Checking...</strong></p>
+  </div>
+
+  <h3>Manual Alarm Test</h3>
+  <div class="buttons">
+    <button class="warning" onclick="testAlarm('FIRE')">Fire Test</button>
+    <button class="danger" onclick="testAlarm('SMOKE')">Smoke Test</button>
+    <button class="secondary" onclick="testAlarm('VIBRATION')">Vibration Test</button>
+    <button class="secondary" onclick="stopAlarm()">Stop Alarm</button>
+  </div>
+
+  <p id="emergencyStatus">No active alert</p>
+</section>
+
+<section class="card">
+  <h2>⏰ Automatic Bell Schedule</h2>
+
+  <label for="level">School Level</label>
+  <select id="level">
+    <option value="jhs">Junior High School</option>
+    <option value="shs">Senior High School</option>
+  </select>
+
+  <p>
+    <label>
+      <input type="checkbox" id="automatic">
+      Enable Automatic Bell
+    </label>
+  </p>
+
+  <div id="schedule"></div>
+
+  <div class="buttons">
+    <button onclick="addSchedule()">+ Add Schedule</button>
+    <button onclick="saveSchedule()">Save Schedule</button>
+  </div>
+
+  <p id="saveStatus"></p>
+</section>
+
+<section class="card">
+  <h2>System Information</h2>
+  <p>Controller: ESP32 DevKit V1</p>
+  <p>Bell Outputs: 3</p>
+  <p>Sound: Active Buzzer</p>
+  <p>Connection: Wi-Fi Access Point</p>
+</section>
+
+<section class="card">
+  <h2>Safety Reminder</h2>
+  <p>
+    This is an educational prototype. Sensor alerts are not
+    certified fire, smoke, or earthquake warnings.
+    Use approved safety equipment for actual school protection.
+  </p>
+</section>
+
+</main>
+<script src="script.js"></script>
+</body>
+</html>
